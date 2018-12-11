@@ -24,8 +24,8 @@ class Post extends Component {
           <p>Likes: {this.state.likes}</p>
         </div>
         <div className="card-action">
-          <button onClick={this.doLike.bind(this)}>like</button>
-          <i className="small material-icons">thumb_up</i>
+          {/* <button >like</button> */}
+          <i className="small material-icons" onClick={this.doLike.bind(this)}>thumb_up</i>
         </div>
       </div>
     );
