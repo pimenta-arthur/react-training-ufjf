@@ -2,31 +2,30 @@ import React, { Component } from 'react';
 import '../post.css';
 
 class Post extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      likes: 0
+      likes: props.post.initialLikes
     };
   }
 
   doLike() {
-      this.setState({ likes: this.state.likes +1 })
+    this.setState({ likes: this.state.likes + 1 });
   }
 
   render() {
+    const post = this.props.post;
     return (
       <div className="card post">
         <div className="card-content">
-          <span className="card-title">{this.props.text}</span>
-          <small>{this.props.time}</small>
+          <span className="card-title">{post.author}</span>
+          <h3>{post.content}</h3>
+          <small>{post.timestamp}</small>
           <p>Likes: {this.state.likes}</p>
         </div>
         <div className="card-action">
-          <button
-            onClick={this.doLike.bind(this)}
-          >
-            Like
-          </button>
+          <button onClick={this.doLike.bind(this)}>like</button>
+          <i className="small material-icons">thumb_up</i>
         </div>
       </div>
     );
