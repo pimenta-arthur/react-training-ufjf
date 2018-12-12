@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Feed from './components/Feed';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import PostDetails from './components/postDetails';
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Switch>
+            <Route path='/post/:timestamp' component={PostDetails}></Route>
             <Route exact path="/" component={Feed} />
             <Route path="*" component={this.notFoundComponent} />
           </Switch>

@@ -2,33 +2,18 @@ import React, { Component } from 'react';
 import Post from './post';
 import PostCreator from './postCreator';
 
-// const postList = [
-//   {
-//     content: 'blahblah',
-//     timestamp: '16:23',
-//     author: 'John Snow',
-//     likes: 0
-//   },
-//   {
-//     content: 'lahlahlah',
-//     timestamp: '16:23',
-//     author: 'Arya Stark',
-//     likes: 1
-//   }
-// ];
-
 class Feed extends Component {
   constructor() {
     super();
     this.state = {
       posts: []
-    }
+    };
   }
 
   insertPost(post) {
     const posts = this.state.posts;
     posts.unshift(post);
-    this.setState({posts: posts});
+    this.setState({ posts: posts });
 
     this.savePosts();
   }
@@ -42,7 +27,7 @@ class Feed extends Component {
   updatePostById(i, likes) {
     let posts = this.state.posts;
     posts[i]['likes'] = likes;
-    this.setState({posts: posts})
+    this.setState({ posts: posts });
 
     this.savePosts();
   }
@@ -51,7 +36,7 @@ class Feed extends Component {
     let posts = localStorage.getItem('posts');
     if (posts) {
       posts = JSON.parse(posts);
-      this.setState({posts: posts});
+      this.setState({ posts: posts });
     }
   }
 
@@ -59,15 +44,26 @@ class Feed extends Component {
     this.retrievePosts();
   }
 
+  navigateToPost(post) {
+    this.props.history.push('post/' + post.timestamp);
+  }
+
   render() {
     return (
       <div>
         <h1>Minha rede social</h1>
 
-        <PostCreator onCreate={this.insertPost.bind(this)}></PostCreator>
+        <PostCreator onCreate={this.insertPost.bind(this)} />
 
         {this.state.posts.map((post, i) => {
-          return <Post key={post.timestamp} post={post}  onClickLike={this.updatePostById.bind(this, i)}/>;
+          return (
+            <Post
+              key={post.timestamp}
+              post={post}
+              onClickLike={this.updatePostById.bind(this, i)}
+              onClickPost={() => this.navigateToPost(post)}
+            />
+          );
         })}
       </div>
     );

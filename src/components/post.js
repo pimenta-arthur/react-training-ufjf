@@ -20,7 +20,7 @@ class Post extends Component {
     const post = this.props.post;
     return (
       <div className="card post">
-        <div className="card-content">
+        <div className="card-content" onClick={() => this.props.onClickPost()} style={{cursor: 'pointer'}}>
           <span className="card-title">{post.author}</span>
           <h3>{post.content}</h3>
           <small>{post.timestamp}</small>
