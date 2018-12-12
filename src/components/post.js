@@ -5,12 +5,15 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      likes: props.post.initialLikes
+      likes: props.post.likes
     };
   }
 
   doLike() {
-    this.setState({ likes: this.state.likes + 1 });
+    const updatedLikes = this.state.likes + 1
+    this.setState({ likes: updatedLikes });
+
+    this.props.onClickLike(updatedLikes);
   }
 
   render() {
@@ -25,7 +28,7 @@ class Post extends Component {
         </div>
         <div className="card-action">
           {/* <button >like</button> */}
-          <i className="small material-icons" onClick={this.doLike.bind(this)}>thumb_up</i>
+          <i className="small material-icons" onClick={this.doLike.bind(this)} style={{cursor: 'pointer'}}>thumb_up</i>
         </div>
       </div>
     );
