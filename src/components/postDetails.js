@@ -10,11 +10,10 @@ class PostDetails extends Component {
   }
 
   componentDidMount() {
-    console.log('bla');
     const posts = JSON.parse(localStorage.getItem('posts'));
     const post = posts
       .filter(post => {
-        return post.timestamp == this.props.match.params.timestamp;
+        return parseInt(post.timestamp) === parseInt(this.props.match.params.timestamp);
       })
       .pop();
 
@@ -22,6 +21,7 @@ class PostDetails extends Component {
   }
   render() {
     console.log(this.state.post);
+    console.log(this.props);
     if (this.state.post === null) {
       return <div>Loading...</div>;
     } else {

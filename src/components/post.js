@@ -10,11 +10,27 @@ class Post extends Component {
   }
 
   doLike() {
-    const updatedLikes = this.state.likes + 1
-    this.setState({ likes: updatedLikes });
+    // const updatedLikes = this.state.likes + 1
+    this.setState({ likes: this.state.likes + 1 }, () => {
+        this.saveUpdatedPosts();
+    });
 
-    this.props.onClickLike(updatedLikes);
+    // this.props.onClickLike(updatedLikes);
   }
+
+  saveUpdatedPosts() {
+    const posts = JSON.parse(localStorage.getItem('posts'));
+    const updatedPosts = posts.map(post => {
+        if (post.timestamp === this.props.post.timestamp) {
+            post.likes = this.state.likes;
+        }
+        console.log('blablalba', post);
+        return post;
+    })
+    
+    localStorage.setItem('posts', JSON.stringify(updatedPosts));
+  }
+
 
   render() {
     const post = this.props.post;
