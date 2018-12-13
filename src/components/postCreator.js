@@ -21,7 +21,7 @@ class PostCreator extends Component {
 
   render() {
     return (
-      <div className="card post">
+      <div className="card">
         <div className="card-content">
           <span className="card-title">Novo Post</span>
           <input

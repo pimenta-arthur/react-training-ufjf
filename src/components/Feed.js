@@ -43,7 +43,22 @@ class Feed extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col s8">
+        <div className="col l4 push-l8 col s8">
+          <div
+            className="valign-wrapper"
+            style={{ margin: '.5rem 0 1rem 0', padding: '24px' }}
+          >
+            <img
+              width="50px"
+              src="https://s-media-cache-ak0.pinimg.com/originals/0f/f3/1b/0ff31b995db77283d1041e75d4cec215.jpg"
+              alt=""
+              className="circle responsive-img"
+            />
+            <span className="black-text" style={{marginLeft: '24px'}}>User name here</span>
+          </div>
+        </div>
+
+        <div className="col l8 pull-l4 col s12">
           <PostCreator onCreate={this.insertPost.bind(this)} />
 
           {this.state.posts.map((post, i) => {
@@ -56,10 +71,6 @@ class Feed extends Component {
             );
           })}
         </div>
-        <div className="col s4">
-          <p>blablabla</p>
-        </div>
-        
       </div>
     );
   }
