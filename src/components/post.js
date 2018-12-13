@@ -39,7 +39,7 @@ class Post extends Component {
           />
           <div className="card-title">
             {post.author}
-            <span id="likes-count">{this.state.likes} likes</span>
+            <span className="right">{this.state.likes} likes</span>
           </div>
         </div>
         <div className="card-content" onClick={() => this.props.onClickPost()}>

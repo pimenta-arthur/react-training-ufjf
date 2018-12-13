@@ -54,12 +54,14 @@ class Feed extends Component {
               alt=""
               className="circle responsive-img"
             />
-            <span className="black-text" style={{marginLeft: '24px'}}>User name here</span>
+            <span className="black-text" style={{marginLeft: '24px'}}>User name</span>
           </div>
+          <PostCreator onCreate={this.insertPost.bind(this)} />
+
         </div>
 
         <div className="col l8 pull-l4 col s12">
-          <PostCreator onCreate={this.insertPost.bind(this)} />
+          {/* <PostCreator onCreate={this.insertPost.bind(this)} /> */}
 
           {this.state.posts.map((post, i) => {
             return (
