@@ -24,7 +24,6 @@ class Post extends Component {
         if (post.timestamp === this.props.post.timestamp) {
             post.likes = this.state.likes;
         }
-        console.log('blablalba', post);
         return post;
     })
     
