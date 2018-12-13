@@ -1,4 +1,5 @@
-## React training UFJF
+## React training by appmasters.io - UFJF
+This repo contains the app built during a React training given by [appmasters.io](https://appmasters.io)
 
 ### Installation
 First, install [git](http://git-scm.com/downloads) and the latest stable version of [node](https://nodejs.org/). Then:
