@@ -42,18 +42,24 @@ class Feed extends Component {
 
   render() {
     return (
-      <div>
-        <PostCreator onCreate={this.insertPost.bind(this)} />
+      <div className="row">
+        <div className="col s8">
+          <PostCreator onCreate={this.insertPost.bind(this)} />
 
-        {this.state.posts.map((post, i) => {
-          return (
-            <Post
-              key={post.timestamp}
-              post={post}
-              onClickPost={() => this.navigateToPost(post)}
-            />
-          );
-        })}
+          {this.state.posts.map((post, i) => {
+            return (
+              <Post
+                key={post.timestamp}
+                post={post}
+                onClickPost={() => this.navigateToPost(post)}
+              />
+            );
+          })}
+        </div>
+        <div className="col s4">
+          <p>blablabla</p>
+        </div>
+        
       </div>
     );
   }

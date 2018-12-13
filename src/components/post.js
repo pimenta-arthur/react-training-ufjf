@@ -12,38 +12,48 @@ class Post extends Component {
   doLike() {
     // const updatedLikes = this.state.likes + 1
     this.setState({ likes: this.state.likes + 1 }, () => {
-        this.saveUpdatedPosts();
+      this.saveUpdatedPosts();
     });
-
-    // this.props.onClickLike(updatedLikes);
   }
 
   saveUpdatedPosts() {
     const posts = JSON.parse(localStorage.getItem('posts'));
     const updatedPosts = posts.map(post => {
-        if (post.timestamp === this.props.post.timestamp) {
-            post.likes = this.state.likes;
-        }
-        return post;
-    })
-    
+      if (post.timestamp === this.props.post.timestamp) {
+        post.likes = this.state.likes;
+      }
+      return post;
+    });
+
     localStorage.setItem('posts', JSON.stringify(updatedPosts));
   }
-
 
   render() {
     const post = this.props.post;
     return (
-      <div className="card post">
-        <div className="card-content" onClick={() => this.props.onClickPost()} style={{cursor: 'pointer'}}>
-          <span className="card-title">{post.author}</span>
-          <h3>{post.content}</h3>
-          <small>{post.timestamp}</small>
-          <p>Likes: {this.state.likes}</p>
+      <div className="card post hoverable">
+        <div className="card-image  waves-effect waves-block waves-light activator">
+          <img
+            className="activator"
+            src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/12/11/naturo-monkey-selfie.jpg?w968h681"
+          />
+          <div className="card-title">
+            {post.author}
+            <span id="likes-count">{this.state.likes} likes</span>
+          </div>
         </div>
-        <div className="card-action">
-          {/* <button >like</button> */}
-          <i className="small material-icons" onClick={this.doLike.bind(this)} style={{cursor: 'pointer'}}>thumb_up</i>
+        <div className="card-content" onClick={() => this.props.onClickPost()}>
+          <p>{post.content}</p>
+          <small>{new Date(post.timestamp).toDateString()}</small>
+        </div>
+        <div className="card-action valign-wrapper">
+          <i
+            className="small material-icons"
+            onClick={this.doLike.bind(this)}
+            style={{ cursor: 'pointer' }}
+          >
+            thumb_up
+          </i>
         </div>
       </div>
     );
