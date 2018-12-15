@@ -43,7 +43,7 @@ class Feed extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col l4 push-l8 col s8">
+        <div className="col l4 push-l8 col s12">
           <div
             className="valign-wrapper"
             style={{ margin: '.5rem 0 1rem 0', padding: '24px' }}
