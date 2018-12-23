@@ -33,6 +33,10 @@ class PostCreator extends Component {
     console.log('onCameraStart');
   }
 
+  onCameraStop() {
+    console.log('onCameraStop');
+  }
+
   toggleCamera() {
     const state = this.state.shouldHide;
     this.setState({ shouldHide: !state });
@@ -72,6 +76,12 @@ class PostCreator extends Component {
               imageCompression={0.97}
               isMaxResolution={false}
               isImageMirror={false}
+              onCameraStart={stream => {
+                this.onCameraStart(stream);
+              }}
+              onCameraStop={() => {
+                this.onCameraStop();
+              }}
             />
           </div>
           <i
@@ -84,7 +94,10 @@ class PostCreator extends Component {
             camera_alt
           </i>
         </div>
-        <div className="card-action" style={{marginTop: this.state.shouldHide ? '10px': '-7px'}}>
+        <div
+          className="card-action"
+          style={{ marginTop: this.state.shouldHide ? '10px' : '-7px' }}
+        >
           <button onClick={() => this.createPost()}>Enviar</button>
         </div>
       </div>
